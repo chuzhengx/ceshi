@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <configuration>
+		  <!--  
+		  <typeAliases>
+		  <typeAlias type="xiongcz."/>
+		  </typeAliases>
+		  -->
+<!--
+  <properties>
+  	<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+  	<property name="uri" value="jdbc:oracle:thin:@192.168.16.105:1521:xiongcz"/>
+  	<property name="user" value="scott"/>
+  	<property name="password" value="18535259"/>
+  </properties>
+    -->
+  
+  <environments default="dev">
+	  <environment id="dev">
+	  	<transactionManager type="JDBC"></transactionManager>
+	  	<dataSource type="POOLED">
+	  		<property name="driver" value="${driver}"/>
+	  		<property name="url" value="${uri}"/>
+	  		<property name="username" value="${user}"/>
+	  		<property name="password" value="${password}"/>
+	  	</dataSource>
+	  </environment>
+  </environments>
+  
+  <mappers>
+  <mapper resource="xiongcz/src/config/mapper/User.xml"/>
+  
+  <!--  <mapper class="xiongcz.src.mapper.UserMapper"/>-->
+  </mappers>
+  
+  
+  </configuration>

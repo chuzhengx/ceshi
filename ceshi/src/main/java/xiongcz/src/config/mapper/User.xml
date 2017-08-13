@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xiongcz.src.mapper.UserMapper">
+
+	<resultMap type="xiongcz.src.entiy.User" id="userMap">
+	<id column="EMPNO" property="no"/>
+	<result column="ENAME" property="name"/>
+	<result column="JOB" property="job"/>
+	<result column="SAL" property="sal"/>
+	</resultMap>
+	
+<select id="selectAll"  resultMap="userMap">
+	select EMPNO,ENAME,JOB,SAL 
+	from EMP 
+</select>
+<select id="selectUserById" parameterType="int" resultMap="userMap">
+	select ENAME,JOB,SAL 
+	from EMP 
+	where EMPNO = #{id}
+</select>
+<insert id="addUser" parameterType="xiongcz.src.entiy.User">
+	insert into EMP(EMPNO,ENAME,JOB,SAL)
+	values         (#{no},#{name},#{job},#{sal})
+</insert>
+<update id="updateUser" parameterType="xiongcz.src.entiy.User">
+	update EMP set ENAME=#{name},JOB=#{job},SAL=#{sal} where EMPNO=#{no}
+</update>
+<delete id="deleteUser" parameterType="int">
+	delete from EMP where EMPNO=#{id}
+</delete>
+</mapper>
